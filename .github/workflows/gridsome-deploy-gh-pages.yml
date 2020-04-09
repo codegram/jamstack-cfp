@@ -1,6 +1,8 @@
 name: "Deploy"
 on:
-  push
+  push:
+    branches:
+      - master
 
 env:
   NODE_VERSION: "10.x"
