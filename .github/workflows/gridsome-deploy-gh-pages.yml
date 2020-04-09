@@ -1,0 +1,43 @@
+name: "Deploy"
+on:
+  push:
+    branches:
+      - master
+
+env:
+  NODE_VERSION: "10.x"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build-and-deploy:
+    name: Install, Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Cache node_modules
+        id: cache-primes
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: npm install, build, and test
+        env:
+          GRIDSOME_BASE_PATH: ${{ secrets.BASE_PATH }}
+          GRIDSOME_BASE_URL: ${{ secrets.BASE_URL }}
+          GRIDSOME_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          GRIDSOME_API_URL: ${{ secrets.API_URL }}
+        run: |
+          npm install
+          npm run build
+      - name: Push to pages
+        uses: crazy-max/ghaction-github-pages@v1.2.4
+        with:
+          build_dir: dist
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN_PERSONAL }}
