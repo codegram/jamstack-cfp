@@ -1,8 +1,12 @@
 module.exports = {
-  plugins: ["gridsome"],
+  plugins: ["gridsome", "prettier", "simple-import-sort"],
   extends: [
     "plugin:prettier/recommended",
     "prettier/vue",
-    "plugin:gridsome/recommended"
-  ]
+    "plugin:gridsome/recommended",
+  ],
+  rules: {
+    "simple-import-sort/sort": "error",
+    "no-console": ["error", { allow: ["error"] }],
+  },
 };
