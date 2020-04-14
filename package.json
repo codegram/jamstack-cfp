@@ -2,18 +2,22 @@
   "name": "jamstack-cfp",
   "private": true,
   "scripts": {
-    "build": "gridsome build",
-    "develop": "gridsome develop",
+    "build": "gridsome build && npm run functions:build",
+    "develop": "env-cmd gridsome develop & npm run functions:serve",
     "explore": "gridsome explore",
     "test": "jest --watch",
-    "test:ci": "jest --passWithNoTests"
+    "test:ci": "jest --passWithNoTests",
+    "functions:serve": "netlify-lambda serve functions",
+    "functions:build": "netlify-lambda build functions"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "gridsome": "^0.7.0",
     "tailwindcss": "^1.2.0"
   },
   "devDependencies": {
     "@testing-library/vue": "^5.0.2",
+    "env-cmd": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-gridsome": "^1.4.1",
@@ -22,6 +26,7 @@
     "gridsome-plugin-tailwindcss": "^2.2.43",
     "jest": "^25.3.0",
     "jest-transform-graphql": "^2.1.0",
+    "netlify-lambda": "^1.6.3",
     "node-sass": "^4.13.1",
     "prettier": "^2.0.4",
     "sass-loader": "^8.0.2",
