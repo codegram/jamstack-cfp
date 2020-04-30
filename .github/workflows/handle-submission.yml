@@ -23,7 +23,7 @@ jobs:
         uses: peter-evans/create-pull-request@v2
         with:
           token: ${{ secrets.GH_TOKEN_PERSONAL }}
-          title: ${{ github.event.client_payload.name }} - ${{ github.event.client_payload.title }}
+          title: "feat(submission): ${{ github.event.client_payload.name }} - ${{ github.event.client_payload.title }}"
           body: |
             # ${{ github.event.client_payload.title }}
             ## by ${{ github.event.client_payload.name }}
