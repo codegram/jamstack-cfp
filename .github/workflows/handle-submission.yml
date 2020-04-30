@@ -15,7 +15,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Process input
         run: |
-          node utils/actions/process-input.js
+          node actions/process-input.js
       - name: Run prettier
         run: |
           npx prettier data/**/*.json --write
