@@ -1,0 +1,31 @@
+name: "Handle Submission"
+on:
+  repository_dispatch:
+    types: handle-submission
+
+jobs:
+  create-pr:
+    name: Create PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Process input
+        run: |
+          node utils/actions/process-input.js
+      - name: Run prettier
+        run: |
+          npx prettier data/**/*.json --write
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GH_TOKEN_PERSONAL }}
+          title: ${{ github.event.client_payload.name }} - ${{ github.event.client_payload.title }}
+          body: |
+            # ${{ github.event.client_payload.title }}
+            ## by ${{ github.event.client_payload.name }}
+            > ${{ github.event.client_payload.description }}
+          labels: submission
