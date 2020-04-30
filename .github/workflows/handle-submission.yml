@@ -18,7 +18,7 @@ jobs:
           node actions/process-input.js
       - name: Run prettier
         run: |
-          npx prettier data/**/*.json --write
+          npx prettier submissions/*.json --write
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
