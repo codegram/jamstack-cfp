@@ -13,5 +13,14 @@ process.env.GRIDSOME_LAMBDA = `${lambdaBase}/.netlify/functions/submit`;
 
 module.exports = {
   siteName: "Gridsome",
-  plugins: [{ use: "gridsome-plugin-tailwindcss" }],
+  plugins: [
+    { use: "gridsome-plugin-tailwindcss" },
+    {
+      use: "@gridsome/source-filesystem",
+      options: {
+        typeName: "Submission",
+        path: "./submissions/*.json",
+      },
+    },
+  ],
 };

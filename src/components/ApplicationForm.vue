@@ -1,5 +1,22 @@
 <template>
-  <form class="my-10" @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit">
+    <h2
+      class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10"
+    >
+      Submit
+    </h2>
+    <div class="mt-3 sm:mt-4">
+      <p class="text-xl leading-7 text-gray-600">
+        Submitting this form will trigger a pull request using GitHub Actions.
+        Once it's merged you will be able to see your submission in the
+        <g-link
+          to="/submissions"
+          class="underline text-indigo-600 hover:text-indigo-900 transition ease-in-out duration-150"
+          >Accepted submissions</g-link
+        >
+        list!
+      </p>
+    </div>
     <Field id="name" :value.sync="name">
       Your name
     </Field>
