@@ -58,6 +58,9 @@ export default {
         })
         .then(() => {
           this.success = true;
+          this.name = "";
+          this.title = "";
+          this.description = "";
           this.loading = false;
         })
         .catch(() => {
