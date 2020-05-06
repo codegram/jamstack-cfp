@@ -15,7 +15,7 @@
       <nav class="-mb-px flex">
         <g-link
           to="/"
-          class="whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+          class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 font-medium text-sm leading-5 focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
           exact-active-class="border-indigo-500 text-indigo-600"
         >
           Submit
@@ -48,9 +48,10 @@
       <ExternalLink href="https://gridsome.org/">Gridsome</ExternalLink>,
       <ExternalLink href="https://github.com/features/actions"
         >GitHub Actions</ExternalLink
-      >
+      >,
+      <ExternalLink href="https://tailwindcss.com/">Tailwind</ExternalLink>
       and
-      <ExternalLink href="https://tailwindcss.com/">Tailwind</ExternalLink>.
+      <ExternalLink href="https://www.netlify.com/">Netlify</ExternalLink>
     </footer>
   </div>
 </template>

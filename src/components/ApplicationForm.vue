@@ -23,30 +23,38 @@
         list!
       </p>
     </div>
-    <Field id="name" :error="nameError" :value.sync="name">
-      Your name
-    </Field>
-    <Field id="title" :error="titleError" :value.sync="title">
-      Talk title
-    </Field>
-    <Field id="description" :value.sync="description" type="textarea">
-      Talk Description
-    </Field>
-    <label class="flex text-sm leading-5 text-gray-700 mt-5">
-      <input type="checkbox" required class="mt-1 mr-2" />
-      I understand this information is going to be hosted in a public repository
-      and I have not included sensitive data in any of the fields.
-    </label>
-    <Alert v-if="error" theme="error">
-      Oops, this is embarassing, but something went wrong while submitting the
-      form.
-    </Alert>
     <Alert v-if="success" theme="success">
-      Form submitted successfully
+      Form submitted successfully! You can
+      <ExternalLink
+        href="https://github.com/codegram/jamstack-cfp/actions?query=workflow%3A%22Handle+Submission%22"
+        >check how GitHub Actions are handling your submission right
+        now</ExternalLink
+      >. In a few minutes, it will appear in this site, listed as a pending
+      submission.
     </Alert>
-    <Btn :disabled="loading">
-      Submit
-    </Btn>
+    <template v-else>
+      <Field id="name" :error="nameError" :value.sync="name">
+        Your name
+      </Field>
+      <Field id="title" :error="titleError" :value.sync="title">
+        Talk title
+      </Field>
+      <Field id="description" :value.sync="description" type="textarea">
+        Talk Description
+      </Field>
+      <label class="flex text-sm leading-5 text-gray-700 mt-5">
+        <input type="checkbox" required class="mt-1 mr-2" />
+        I understand this information is going to be hosted in a public
+        repository and I have not included sensitive data in any of the fields.
+      </label>
+      <Alert v-if="error" theme="error">
+        Oops, this is embarassing, but something went wrong while submitting the
+        form.
+      </Alert>
+      <Btn :disabled="loading">
+        Submit
+      </Btn>
+    </template>
   </form>
 </template>
 
@@ -55,6 +63,7 @@ import axios from "axios";
 
 import Alert from "~/components/Alert";
 import Btn from "~/components/Btn";
+import ExternalLink from "~/components/ExternalLink";
 import Field from "~/components/Field";
 
 export default {
@@ -71,6 +80,7 @@ export default {
   components: {
     Alert,
     Btn,
+    ExternalLink,
     Field,
   },
   computed: {

@@ -10,7 +10,7 @@
         <slot />
       </p>
     </div>
-    <div class="mt-6 border-t-2 border-gray-200">
+    <div class="mt-6">
       <Submission
         v-for="submission in submissions"
         :key="submission.id"
