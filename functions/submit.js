@@ -17,11 +17,11 @@ function preflight() {
 }
 
 function submit(data) {
-  const user = "codegram";
-  const repo = "jamstack-cfp";
+  const owner = "codegram";
+  const name = "jamstack-cfp";
 
   return axios.request({
-    url: `https://api.github.com/repos/${user}/${repo}/dispatches`,
+    url: `https://api.github.com/repos/${owner}/${name}/dispatches`,
     method: "post",
     headers: {
       Accept: "application/vnd.github.everest-preview+json",
