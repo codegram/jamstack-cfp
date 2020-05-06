@@ -27,7 +27,7 @@
           class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 font-medium text-sm leading-5 focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
           exact-active-class="border-indigo-500 text-indigo-600"
         >
-          View submissions
+          Accepted submissions
         </g-link>
       </nav>
     </div>

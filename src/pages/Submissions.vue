@@ -1,15 +1,39 @@
 <template>
   <Layout>
-    <AcceptedSubmissions />
+    <SubmissionList title="Accepted submissions" :submissions="submissions">
+      Accepted submissions are added to the repository as json files, after the
+      pull request is merged.
+    </SubmissionList>
   </Layout>
 </template>
 
+<page-query>
+  query {
+    submissions: allSubmission {
+      edges {
+        node {
+          id
+          date
+          description
+          name
+          title
+        }
+      }
+    }
+  }
+</page-query>
+
 <script>
-import AcceptedSubmissions from "~/components/AcceptedSubmissions";
+import SubmissionList from "~/components/SubmissionList";
 
 export default {
   components: {
-    AcceptedSubmissions,
+    SubmissionList,
+  },
+  computed: {
+    submissions() {
+      return this.$page.submissions.edges.map((e) => e.node);
+    },
   },
 };
 </script>
