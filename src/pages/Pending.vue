@@ -2,15 +2,12 @@
   <Layout>
     <SubmissionList title="Pending submissions" :submissions="submissions">
       Pending submissions are in the repository
-      <a
+      <ExternalLink
         href="https://github.com/codegram/jamstack-cfp/pulls?q=is%3Apr+is%3Aopen+label%3Asubmission"
-        class="underline text-indigo-600 hover:text-indigo-900 transition ease-in-out duration-150"
-        >pull requests</a
+        >pull requests</ExternalLink
       >. By adding the GitHub's API as a
-      <a
-        href="https://gridsome.org/plugins/@gridsome/source-graphql"
-        class="underline text-indigo-600 hover:text-indigo-900 transition ease-in-out duration-150"
-        >GraphQL source</a
+      <ExternalLink href="https://gridsome.org/plugins/@gridsome/source-graphql"
+        >GraphQL source</ExternalLink
       >
       we can compile them statically. A deploy is triggered after a new PR is
       opened to always list latest submissions.
@@ -37,10 +34,12 @@
 </page-query>
 
 <script>
+import ExternalLink from "~/components/ExternalLink";
 import SubmissionList from "~/components/SubmissionList";
 
 export default {
   components: {
+    ExternalLink,
     SubmissionList,
   },
   computed: {

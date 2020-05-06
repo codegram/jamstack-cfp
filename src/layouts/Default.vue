@@ -7,10 +7,8 @@
       This is an example call for papers application, made to showcase how to
       make use of GitHub Actions to add user generated content to your JAMStack
       static site! Check out the
-      <a
-        href="https://github.com/codegram/jamstack-cfp"
-        class="underline text-indigo-600 hover:text-indigo-900 transition ease-in-out duration-150"
-        >repo</a
+      <ExternalLink href="https://github.com/codegram/jamstack-cfp"
+        >repo</ExternalLink
       >.
     </p>
     <div class="mt-6 mb-8 border-b border-gray-200">
@@ -40,13 +38,29 @@
     </div>
 
     <slot />
+
+    <footer
+      class="mt-10 text-gray-700 text-sm text-center border-t-2 border-gray-200 pt-5"
+    >
+      Made with ❤️ by
+      <ExternalLink href="https://www.codegram.com/">Codegram</ExternalLink>
+      using
+      <ExternalLink href="https://gridsome.org/">Gridsome</ExternalLink>,
+      <ExternalLink href="https://github.com/features/actions"
+        >GitHub Actions</ExternalLink
+      >
+      and
+      <ExternalLink href="https://tailwindcss.com/">Tailwind</ExternalLink>.
+    </footer>
   </div>
 </template>
 
-<static-query>
-  query {
-    metadata {
-      siteName
-    }
-  }
-</static-query>
+<script>
+import ExternalLink from "~/components/ExternalLink";
+
+export default {
+  components: {
+    ExternalLink,
+  },
+};
+</script>
