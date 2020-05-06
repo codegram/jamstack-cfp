@@ -1,8 +1,8 @@
 name: "Deploy"
 on:
-  push:
-    branches:
-      - master
+  push
+    # branches:
+    #   - master
   repository_dispatch:
     types: trigger-deploy
 
@@ -32,9 +32,6 @@ jobs:
       - name: npm install, build, and test
         env:
           GRIDSOME_BASE_PATH: ${{ secrets.BASE_PATH }}
-          GRIDSOME_BASE_URL: ${{ secrets.BASE_URL }}
-          GRIDSOME_CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          GRIDSOME_API_URL: ${{ secrets.API_URL }}
         run: |
           npm install
           npm run build
@@ -43,4 +40,4 @@ jobs:
         with:
           build_dir: dist
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN_PERSONAL }}
+          GITHUB_PAT: ${{ secrets.GH_TOKEN_PERSONAL }}

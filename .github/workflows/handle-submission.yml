@@ -30,6 +30,7 @@ jobs:
             ## by ${{ github.event.client_payload.name }}
             > ${{ github.event.client_payload.description }}
           labels: submission
+      ## To deploy on GitHub Pages
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
