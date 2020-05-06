@@ -3,9 +3,8 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    types:
-      - opened
+  repository_dispatch:
+    types: trigger-deploy
 
 env:
   NODE_VERSION: "10.x"
