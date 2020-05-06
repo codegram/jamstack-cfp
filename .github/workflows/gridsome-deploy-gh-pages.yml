@@ -1,8 +1,8 @@
 name: "Deploy"
 on:
-  push
-    # branches:
-    #   - master
+  push:
+    branches:
+      - master
   repository_dispatch:
     types: trigger-deploy
 
@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-node-
       - name: npm install, build, and test
         env:
-          GRIDSOME_BASE_PATH: ${{ secrets.BASE_PATH }}
+          BASE_PATH: ${{ secrets.BASE_PATH }}
         run: |
           npm install
           npm run build
