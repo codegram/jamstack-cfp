@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <SubmissionList title="Pending submissions" :submissions="submissions">
-      Pending submissions are in the repository
+      Pending submissions are the open
       <ExternalLink
         href="https://github.com/codegram/jamstack-cfp/pulls?q=is%3Apr+is%3Aopen+label%3Asubmission"
         >pull requests</ExternalLink
