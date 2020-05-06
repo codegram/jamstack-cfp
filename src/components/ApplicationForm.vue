@@ -7,8 +7,14 @@
     </h2>
     <div class="mt-3 sm:mt-4">
       <p class="text-xl leading-7 text-gray-600">
-        Submitting this form will trigger a pull request using GitHub Actions.
-        Once it's merged you will be able to see your submission in the
+        Submitting this form will trigger a pull request using GitHub Actions,
+        which will be displayed in the
+        <g-link
+          to="/pending"
+          class="underline text-indigo-600 hover:text-indigo-900 transition ease-in-out duration-150"
+          >Pending submissions</g-link
+        >
+        tab. Once it's merged you will be able to see your submission in the
         <g-link
           to="/submissions"
           class="underline text-indigo-600 hover:text-indigo-900 transition ease-in-out duration-150"
@@ -17,15 +23,20 @@
         list!
       </p>
     </div>
-    <Field id="name" :value.sync="name">
+    <Field id="name" :error="nameError" :value.sync="name">
       Your name
     </Field>
-    <Field id="title" :value.sync="title">
+    <Field id="title" :error="titleError" :value.sync="title">
       Talk title
     </Field>
     <Field id="description" :value.sync="description" type="textarea">
       Talk Description
     </Field>
+    <label class="flex text-sm leading-5 text-gray-700 mt-5">
+      <input type="checkbox" required class="mt-1 mr-2" />
+      I understand this information is going to be hosted in a public repository
+      and I have not included sensitive data in any of the fields.
+    </label>
     <Alert v-if="error" theme="error">
       Oops, this is embarassing, but something went wrong while submitting the
       form.
@@ -62,7 +73,24 @@ export default {
     Btn,
     Field,
   },
+  computed: {
+    nameError() {
+      if (this.name && this.invalidString(this.name)) {
+        return "Please avoid using special characters";
+      }
+      return "";
+    },
+    titleError() {
+      if (this.title && this.invalidString(this.title)) {
+        return "Please avoid using special characters";
+      }
+      return "";
+    },
+  },
   methods: {
+    invalidString(str) {
+      return !/^(?!.*(#|>))/.test(str);
+    },
     handleSubmit() {
       this.loading = true;
       this.error = false;

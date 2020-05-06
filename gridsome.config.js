@@ -22,5 +22,17 @@ module.exports = {
         path: "./submissions/*.json",
       },
     },
+    {
+      use: "@gridsome/source-graphql",
+      options: {
+        url: "https://api.github.com/graphql",
+        fieldName: "github",
+        typeName: "githubTypes",
+
+        headers: {
+          Authorization: `Bearer ${process.env.GH_TOKEN_PERSONAL}`,
+        },
+      },
+    },
   ],
 };
