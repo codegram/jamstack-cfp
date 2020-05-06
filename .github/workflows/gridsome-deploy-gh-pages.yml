@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    types:
+      - opened
 
 env:
   NODE_VERSION: "10.x"
