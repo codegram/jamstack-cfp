@@ -17,10 +17,10 @@
         list!
       </p>
     </div>
-    <Field id="name" :value.sync="name">
+    <Field id="name" :error="nameError" :value.sync="name">
       Your name
     </Field>
-    <Field id="title" :value.sync="title">
+    <Field id="title" :error="titleError" :value.sync="title">
       Talk title
     </Field>
     <Field id="description" :value.sync="description" type="textarea">
@@ -62,7 +62,24 @@ export default {
     Btn,
     Field,
   },
+  computed: {
+    nameError() {
+      if (this.name && this.invalidString(this.name)) {
+        return "Please avoid using special characters";
+      }
+      return "";
+    },
+    titleError() {
+      if (this.title && this.invalidString(this.title)) {
+        return "Please avoid using special characters";
+      }
+      return "";
+    },
+  },
   methods: {
+    invalidString(str) {
+      return !/^(?!.*(#|>))/.test(str);
+    },
     handleSubmit() {
       this.loading = true;
       this.error = false;
