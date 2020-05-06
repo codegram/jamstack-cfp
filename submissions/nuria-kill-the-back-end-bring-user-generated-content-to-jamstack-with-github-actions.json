@@ -1,0 +1,6 @@
+{
+  "date": 1588760728559,
+  "description": "Static sites have been making a comeback these last few years. With the JAMStack approach (J-A-M stands for JavaScript, APIs and Markup), we can statically generate sites with lots of content, like blogs, that have fast performance, excellent SEO, better security, straightforward scalability, and great developer experience. But nothing is perfect and JAMStack sites have their drawbacks too, one of them being limited ability to handle user-generated content… until now!\n\nGitHub Actions are a way to automate software workflows. Running tests, linting, building and deploying is the most typical flow that will probably come to mind. But this is just the beginning, GitHub Actions open a new world of possibilities for JAMStack sites. In this talk we'll see how we can turn GitHub into our own Content Management System that will receive user submissions from the client-side application, validate them and publish them, all without any backend server involved!",
+  "name": "Núria",
+  "title": "Kill the back-end: Bring user-generated content to JAMStack with GitHub Actions"
+}
