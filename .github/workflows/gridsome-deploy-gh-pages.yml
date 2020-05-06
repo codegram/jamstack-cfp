@@ -9,6 +9,7 @@ on:
 env:
   NODE_VERSION: "10.x"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN_PERSONAL: ${{ secrets.GH_TOKEN_PERSONAL }}
 
 jobs:
   build-and-deploy:
