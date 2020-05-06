@@ -46,7 +46,7 @@ export default {
     submissions() {
       return this.$page.github.repository.pullRequests.edges.map((e) => {
         const [_, title, name, description] = e.node.body.match(
-          /# (.+)\n## by (.+)\n> (.+)/
+          /# (.+)\n## by (.+)\n> ((.|\n)+)/
         );
 
         return {
