@@ -7,9 +7,10 @@
       <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900">
         {{ submission.title }}
       </h3>
-      <p class="mt-3 text-base leading-6 text-gray-600 whitespace-pre-line">
-        {{ submission.description }}
-      </p>
+      <span
+        class="block mt-3 text-base leading-6 text-gray-600 whitespace-pre-line"
+        >{{ submission.description }}</span
+      >
     </div>
   </div>
 </template>
